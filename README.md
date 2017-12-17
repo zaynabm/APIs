@@ -7,7 +7,7 @@
 	- git clone git clone https://zaynabm@bitbucket.org/zaynabm/stebn-apis.git
 	- cd stebn-apis
 	- npm install
-	- edit config.js, set "stationID" to you station's ID 
+	- edit config.js, set "stationID" to your station's ID 
 	- node app
 	
 ### APIs ? ###
