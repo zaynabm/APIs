@@ -1,7 +1,7 @@
 ######### STATION APIS#########
 
 ### What is this repository for? ###
-	- APIs for login and do actions (rent/back)
+	- APIs for login and do actions (RENT/BACK)
 
 ### How do I get set up? ###
 	- git clone git clone https://zaynabm@bitbucket.org/zaynabm/stebn-apis.git
