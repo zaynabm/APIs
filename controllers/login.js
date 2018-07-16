@@ -8,7 +8,7 @@ var errmsg
 var db=require("../dbDrivers/mongo/DBfunctions")
 var config =require('../config').config
 var errmsg
-router.post("/checkRFID",function (req,resp) {
+router.post("/checkUserRFID",function (req,resp) {
     var msg,data,statusCode;
     if (req.body.userRFID){
         var userRFID = req.body.userRFID
@@ -29,7 +29,7 @@ router.post("/checkRFID",function (req,resp) {
         resp.send(config.HttpResp(errmsg,{}))
     }
 })
-router.post("/checkPassword",function (req,resp) {
+router.post("/checkUserPassword",function (req,resp) {
     if(req.body.userRFID){
         if(req.body.userPassword){
             var userRFID = req.body.userRFID

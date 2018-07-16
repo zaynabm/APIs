@@ -8,7 +8,7 @@ var db=require("../dbDrivers/mongo/DBfunctions")
 var router=express.Router();
 var errmsg;
 
-router.post("/rent",function (req,resp) {
+router.post("/toRent",function (req,resp) {
     if(req.body.userRFID){
         if(req.body.bikeRFID){
             var userRFID = req.body.userRFID
@@ -56,37 +56,20 @@ router.post("/rent",function (req,resp) {
         resp.send(config.HttpResp(errmsg,{}))
     }
 })
-router.post("/back",function (req,resp) {
+router.post("/toBack",function (req,resp) {
     if(req.body.bikeRFID){
         var bikeRFID = req.body.bikeRFID
-        // db.checkBikeRFID(bikeRFID).then((res,err)=>{
-        //     if (res.result)
-                // db.checkValidBike(bikeRFID).then((res,err)=>{
-                //     if(!res.result){
-                        db.back(bikeRFID).then((res,err)=>{
-                            if(res.result) {
-                                resp.statusCode= 200
-                                resp.send(config.HttpResp("KO",res.data))
-                            }
-                            else {
-                                log("ERROR-back    :"+res.msg);
-                                resp.statusCode= 404
-                                resp.send(config.HttpResp(res.msg,{}))
-                            }
-                        })
-                //     }else{
-                //         errmsg = "INVALID bikeRFID"
-                //         log("ERROR-back    :"+errmsg);
-                //         resp.statusCode= 404
-                //         resp.send(config.HttpResp(errmsg,{}))
-                //     }
-                // })
-        //     else {
-        //         log("ERROR-back    :"+res.msg);
-        //         resp.statusCode= 404
-        //         resp.send(config.HttpResp(res.msg,{}))
-        //     }
-        // })
+        db.back(bikeRFID).then((res,err)=>{
+            if(res.result) {
+                resp.statusCode= 200
+                resp.send(config.HttpResp("KO",res.data))
+            }
+            else {
+                log("ERROR-back    :"+res.msg);
+                resp.statusCode= 404
+                resp.send(config.HttpResp(res.msg,{}))
+            }
+        })
     }else{
         errmsg="Body missing bikeRFID"
         log("ERROR-back    :"+errmsg)
